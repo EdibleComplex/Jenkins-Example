@@ -14,20 +14,27 @@ pipeline {
           sh "./mvnw package"
         }
       }
+
       stage("parallel test") {
-        parallel testsA: {
-          steps {
-             sh "echo test set A" 
-             sleep 5
-             sleep 1
-          }
-        }, testB: {
-            steps {
-            sh: "echo test set B"
-            sleep 2
-          }
+        steps{
+          parallel(
+            A: {
+               steps {
+                 sh "echo test set A" 
+                 sleep 5
+                 sleep 1
+               }
+             }, 
+            B: {
+              steps {
+                sh: "echo test set B"
+                sleep 2
+              }
+            }
+          )
         }
       }
+
       stage("archive") {
           // **/target/*.jar
         steps {
