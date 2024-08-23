@@ -15,21 +15,18 @@ pipeline {
         }
       }
       stage("parallel test") {
-        parallel(
-          a: {
-               steps {
-                 sh "echo test set A" 
-                 sleep 5
-                 sleep 1
-               }
-             }, 
-          b: {
-              steps {
-                sh: "echo test set B"
-                sleep 2
-              }
-             }
-        )
+        parallel testsA: {
+          steps {
+             sh "echo test set A" 
+             sleep 5
+             sleep 1
+          }
+        }, testB: {
+            steps {
+            sh: "echo test set B"
+            sleep 2
+          }
+        }
       }
       stage("archive") {
           // **/target/*.jar
