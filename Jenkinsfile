@@ -26,7 +26,7 @@ pipeline {
             }
           }
           stage('Test B') {
-            agent { any }
+            agent  any 
             steps {
               sleep 2
             }
