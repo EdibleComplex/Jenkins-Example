@@ -18,7 +18,7 @@ pipeline {
       stage("parallel test") {
         parallel {
           stage('Test A') {
-            agent { any }
+            agent  any
             steps {
               sh "echo test set A"
               sleep 5
