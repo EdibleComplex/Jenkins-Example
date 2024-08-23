@@ -32,6 +32,7 @@ pipeline {
             }
           }
         }
+      }
 
       stage("archive") {
           // **/target/*.jar
