@@ -16,7 +16,7 @@ pipeline {
       }
 
       stage("parallel test") {
-        parrallel {
+        parallel {
           stage('Test A') {
             agent { any }
             steps {
