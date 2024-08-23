@@ -14,7 +14,7 @@ pipeline {
           sh "./mvnw package"
         }
       }
-      stage("parallel test) {
+      stage("parallel test") {
         parallel testsA: {
           steps {
              sh "echo test set A" 
